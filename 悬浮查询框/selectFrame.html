@@ -1,0 +1,108 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        body, html{width: 100%;height: 100%; font-family:"微软雅黑";font-size: 14px;}
+        *{
+        	margin: 0;padding: 0;
+        }
+        #map{
+        	z-index: 0;
+        	height: 100%;
+        }
+   		#left{
+   			position: absolute;
+   			left: 20px;
+   			top:20px;
+   			width:368px;
+   			overflow: hidden;
+   		}
+   		#searchOption{
+   			position: relative;
+   			float: left;
+   			z-index: 2;
+   			width:329px;
+   			background: #EEEEEE;
+   			box-shadow: 1px 2px 1px rgba(0,0,0,.15);
+   		}
+   		#searchWord{
+   			line-height: 20px;
+   			height: 38px;
+   			width: 329px;
+   			border-left: 10px solid transparent;
+   			pointer-events: auto;
+   			padding: 9px 0 ;
+   		}
+   		#searchImg{
+   			position: relative;
+   			float: left;
+   			padding: 5px;
+   			z-index: 2;
+   			width: 28px;
+   			height: 28px;
+   			background: #3385ff;
+   		}
+   		input{
+   			outline: none;
+   			background: none;
+   			border:0px;
+   		}
+   		ul li{
+   			list-style: none;
+   		}
+   		div.layerBox{
+   			background: #eee;
+   			border-top: 1px solid gray;
+   		}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=H6ebZECNpQNBOUVVQicpxC6C8OaGVttG"></script>
+    <title>本地搜索的数据接口</title>
+</head>
+<body>
+	<div id="left">
+		<div id="searchOption">	
+			<input type="text" id="searchWord" class="s_ipt" size="20" placeholder="搜地点、查公交、找路线">
+			<div class="layerBox">
+				<ul class="layer">
+					<li value="scenic" >
+						<span>景区景点</span>
+					</li>
+					<li value="monitor">
+						<span>监控点位</span>
+					</li>
+					<li value="patrol">
+						<span>巡逻队</span>
+					</li>
+					<li value="group">
+						<span>团队游客</span>
+					</li>
+					<li value="pubFacility">
+						<span>公共服务设施</span>
+					</li>
+					<li value="touristShop">
+						<span>特色商店</span>
+					</li>
+					<li value="hotel">
+						<span>住宿设施</span>
+					</li>
+				</ul>
+			</div>
+			<div id="searchFrame"></div>
+		</div>
+		<img id="searchImg" src="../gis/search.png"  title="搜索" onclick="onSearch();"/>
+		<div id="searchResult">
+			<ul id="searchList"></ul>
+			<div id="pageDiv"></div>
+		</div>
+	</div>
+    <div id="map"></div>
+</body>
+</html>
+<script type="text/javascript">
+
+    // 百度地图API功能
+    var map = new BMap.Map("map",{mapType:BMAP_HYBRID_MAP});        
+    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
+    map.enableScrollWheelZoom();//启用滚轮放大缩小，默认禁用
+	console.log(map.getMapStyle());
+</script>
