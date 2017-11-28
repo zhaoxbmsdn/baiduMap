@@ -54,6 +54,10 @@
    			background: #eee;
    			border-top: 1px solid gray;
    		}
+   		ul li:hover{
+   			background: gray;
+   			cursor: pointer;
+   		}
     </style>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=H6ebZECNpQNBOUVVQicpxC6C8OaGVttG"></script>
     <title>本地搜索的数据接口</title>
@@ -61,28 +65,36 @@
 <body>
 	<div id="left">
 		<div id="searchOption">	
+			<!--
+            	作者：385852637@qq.com
+            	时间：2017-11-28
+            	描述：输入框
+            	1. 鼠标点击时，弹出图层框
+            	2. 输入框有值时，进行搜索，对应位置出现搜索辅助框
+            	3. 搜索完毕，用新的列表显示结果框；
+            -->
 			<input type="text" id="searchWord" class="s_ipt" size="20" placeholder="搜地点、查公交、找路线">
 			<div class="layerBox" style="display: none;">
 				<ul class="layer">
-					<li value="scenic" >
+					<li data-layer="scenic" onclick="getLayer(this.dataset.layer)">
 						<span>景区景点</span>
 					</li>
-					<li value="monitor">
+					<li data-layer="monitor" onclick="getLayer(this.dataset.layer)">
 						<span>监控点位</span>
 					</li>
-					<li value="patrol">
+					<li data-layer="patrol" onclick="getLayer(this.dataset.layer)">
 						<span>巡逻队</span>
 					</li>
-					<li value="group">
+					<li data-layer="group" onclick="getLayer(this.dataset.layer)">
 						<span>团队游客</span>
 					</li>
-					<li value="pubFacility">
+					<li data-layer="pubFacility" onclick="getLayer(this.dataset.layer)">
 						<span>公共服务设施</span>
 					</li>
-					<li value="touristShop">
+					<li data-layer="touristShop" onclick="getLayer(this.dataset.layer)">
 						<span>特色商店</span>
 					</li>
-					<li value="hotel">
+					<li data-layer="hotel" onclick="getLayer(this.dataset.layer)">
 						<span>住宿设施</span>
 					</li>
 				</ul>
@@ -106,6 +118,10 @@
     map.enableScrollWheelZoom();//启用滚轮放大缩小，默认禁用
 	
 	document.getElementById("searchWord").addEventListener("click",function(){
-		document.getElementById("layerBox").style.display = "block";
-	},false)
+		document.getElementsByClassName("layerBox")[0].style.display = "block";
+	},false);
+	function getLayer(value){
+		console.log(value);
+	}
+	
 </script>
