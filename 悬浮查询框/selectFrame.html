@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,6 +17,7 @@
    			top:20px;
    			width:368px;
    			overflow: hidden;
+   			background: yellow;
    		}
    		#searchOption{
    			position: relative;
@@ -118,8 +120,11 @@
     map.enableScrollWheelZoom();//启用滚轮放大缩小，默认禁用
 	
 	document.getElementById("searchWord").addEventListener("click",function(){
-		document.getElementsByClassName("layerBox")[0].style.display = "block";
+		$("div.layerBox").fadeIn();
 	},false);
+	$("#searchWord").blur(function(){
+		$("div.layerBox").fadeOut();
+	});
 	function getLayer(value){
 		console.log(value);
 	}
