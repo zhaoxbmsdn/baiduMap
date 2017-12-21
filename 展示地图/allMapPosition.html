@@ -24,5 +24,8 @@
     var map = new BMap.Map("map");        
     map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
     map.enableScrollWheelZoom();//启用滚轮放大缩小，默认禁用
-
+	var marker = new BMap.Marker(new BMap.Point(116.404, 39.915),{icon:new BMap.Icon("../gis/monitor.png", new BMap.Size(45, 45))});
+	label = new BMap.Label("北京北京北京",{offset:new BMap.Size(-15,-15)});
+	marker.setLabel(label);
+	map.addOverlay(marker);
 </script>

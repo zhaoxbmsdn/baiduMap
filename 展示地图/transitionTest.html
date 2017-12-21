@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#result{
+				background: greenyellow;
+				height: 300px;
+				width: 300px;
+				pointer-events: none;	
+			}
+			#card{
+				position: absolute;
+				background: yellow;
+				height: 30px;
+				width: 300px;
+			}
+			.open{
+				opacity: 1;
+				visibility: visible;
+				transition: opacity 1s,visibility 1s;
+				-webkit-transition: opacity 1s,visibility 1s;
+			}
+			.fold{
+				opacity: 0;
+				visibility: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="card" class="open"></div>
+		<div id="result" class="fold"></div>
+	</body>
+	<script>
+		var div = document.getElementById("card");
+		var result = document.getElementById("result");
+		div.addEventListener("mouseover",function(){
+			div.className = "open fold";
+			result.className ="open";
+		},false);
+		div.addEventListener("mouseout",function(){
+			div.className = "open";
+			result.className="open fold";
+		},false);
+	</script>
+</html>
